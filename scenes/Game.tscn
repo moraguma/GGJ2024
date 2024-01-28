@@ -1,18 +1,56 @@
-[gd_scene load_steps=8 format=3 uid="uid://d2tkuoqlmmwiu"]
+[gd_scene load_steps=13 format=3 uid="uid://d2tkuoqlmmwiu"]
 
 [ext_resource type="Script" path="res://scenes/scripts/Game.gd" id="1_emjby"]
 [ext_resource type="PackedScene" uid="uid://ds16gakjru6i2" path="res://scenes/Player.tscn" id="2_1tddw"]
+[ext_resource type="Theme" uid="uid://dty6n2jvheoev" path="res://resources/themes/main.tres" id="2_3ynw4"]
 [ext_resource type="PackedScene" uid="uid://bnj6offovog47" path="res://scenes/MeteorSmall.tscn" id="4_1t66m"]
 [ext_resource type="PackedScene" uid="uid://cm0mguoufcdxe" path="res://scenes/CollectibleItem.tscn" id="4_dkk7e"]
 [ext_resource type="PackedScene" uid="uid://dxudjah187we7" path="res://scenes/ShipSmall.tscn" id="5_5poiq"]
 [ext_resource type="PackedScene" uid="uid://bm301h64ky48b" path="res://scenes/ShipBig.tscn" id="6_e6yk2"]
 [ext_resource type="PackedScene" uid="uid://cdhhacwpudwao" path="res://scenes/MeteorBig.tscn" id="6_gn2hy"]
+[ext_resource type="Texture2D" uid="uid://cghh8nw57ufs6" path="res://resources/sprites/indicator.png" id="8_7v6d1"]
+[ext_resource type="Texture2D" uid="uid://iibwahp6kmw5" path="res://resources/sprites/bg.png" id="9_558vc"]
+[ext_resource type="Texture2D" uid="uid://cc3tapg7ao1ic" path="res://resources/sprites/BGParallax.png" id="10_8m6qv"]
+[ext_resource type="PackedScene" uid="uid://du4w8ms0klrte" path="res://scenes/EscapePod.tscn" id="12_uoo4w"]
 
 [node name="Game" type="Node2D"]
+texture_filter = 1
 script = ExtResource("1_emjby")
 
+[node name="Tutorial" type="Node2D" parent="."]
+z_index = 2
+
+[node name="Move" type="RichTextLabel" parent="Tutorial"]
+offset_left = 232.0
+offset_top = 200.0
+offset_right = 523.0
+offset_bottom = 269.0
+theme = ExtResource("2_3ynw4")
+bbcode_enabled = true
+text = "[center][wave]Move[/wave] with A and D
+[wave]Jump[/wave] with space bar
+[wave]Throw[/wave] item with left click"
+
+[node name="Move2" type="RichTextLabel" parent="Tutorial"]
+offset_left = 1008.0
+offset_top = 224.0
+offset_right = 1299.0
+offset_bottom = 293.0
+theme = ExtResource("2_3ynw4")
+bbcode_enabled = true
+text = "[center][wave]Grab[/wave] onto debris by holding right click"
+
+[node name="Move3" type="RichTextLabel" parent="Tutorial"]
+offset_left = 1704.0
+offset_top = 224.0
+offset_right = 1995.0
+offset_bottom = 293.0
+theme = ExtResource("2_3ynw4")
+bbcode_enabled = true
+text = "[center][wave]Get to the escape pod![/wave]"
+
 [node name="Player" parent="." instance=ExtResource("2_1tddw")]
-position = Vector2(254, 169)
+position = Vector2(222, 169)
 
 [node name="CollectibleItem" parent="." instance=ExtResource("4_dkk7e")]
 position = Vector2(107, 181)
@@ -34,8 +72,38 @@ position = Vector2(408, 223)
 
 [node name="ShipBig" parent="." instance=ExtResource("6_e6yk2")]
 position = Vector2(246, 216)
-rotation = -0.301085
+rotation = -0.0172382
 
 [node name="ShipBig2" parent="." instance=ExtResource("6_e6yk2")]
 position = Vector2(46, 163)
 rotation = 1.14071
+
+[node name="ShipBig3" parent="." instance=ExtResource("6_e6yk2")]
+position = Vector2(691, 184)
+rotation = -0.32529
+
+[node name="Indicator" type="Sprite2D" parent="."]
+z_index = 11
+texture_filter = 1
+position = Vector2(256, 16)
+texture = ExtResource("8_7v6d1")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource("9_558vc")
+centered = false
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.5, 1)
+motion_mirroring = Vector2(480, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+texture = ExtResource("10_8m6qv")
+centered = false
+
+[node name="EscapePod" parent="." instance=ExtResource("12_uoo4w")]
+position = Vector2(8000, 135)

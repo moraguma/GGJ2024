@@ -1,6 +1,15 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://dty6n2jvheoev"]
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://dty6n2jvheoev"]
 
 [ext_resource type="FontFile" uid="uid://5trb3743b8qh" path="res://resources/fonts/mister_pixel_16/MP16SC.ttf" id="1_qag2r"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wjwg5"]
+
 [resource]
 default_font = ExtResource("1_qag2r")
+Button/colors/font_hover_color = Color(0.294118, 0.356863, 0.670588, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/constants/outline_size = 8
+Button/font_sizes/font_size = 32
+Button/styles/focus = SubResource("StyleBoxEmpty_wjwg5")
+RichTextLabel/colors/font_outline_color = Color(0, 0, 0, 1)
+RichTextLabel/constants/outline_size = 4

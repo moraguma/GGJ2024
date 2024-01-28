@@ -1,0 +1,55 @@
+[gd_scene load_steps=6 format=3 uid="uid://coyy4aothfu62"]
+
+[ext_resource type="Script" path="res://scenes/scripts/LaserMeteor.gd" id="1_voiup"]
+[ext_resource type="Texture2D" uid="uid://cwdy0y86bajco" path="res://resources/sprites/meteor2.png" id="2_r7cx5"]
+[ext_resource type="Texture2D" uid="uid://5afk2roqj85r" path="res://resources/sprites/laser.png" id="2_x8g6j"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ibkiq"]
+rough = true
+
+[sub_resource type="Gradient" id="Gradient_e2ndv"]
+colors = PackedColorArray(0.843015, 0.127932, 0.17406, 0.996078, 0.792157, 0.462745, 0.243137, 0.152941)
+
+[node name="LaserMeteor" type="RigidBody2D"]
+texture_filter = 1
+mass = 10.0
+physics_material_override = SubResource("PhysicsMaterial_ibkiq")
+gravity_scale = 0.0
+script = ExtResource("1_voiup")
+
+[node name="Particles" type="CPUParticles2D" parent="."]
+position = Vector2(0, -196)
+amount = 32
+lifetime = 5.0
+randomness = 0.2
+emission_shape = 1
+emission_sphere_radius = 5.0
+direction = Vector2(0, 1)
+spread = 15.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 30.0
+initial_velocity_max = 100.0
+damping_min = 20.0
+damping_max = 30.0
+scale_amount_min = 2.0
+scale_amount_max = 3.0
+color_ramp = SubResource("Gradient_e2ndv")
+
+[node name="Hitbox" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-14, -31, -18, -47, -3, -52, 12, -48, 7, -29, 30, -19, 30, -6, 26, 0, 27, 13, 12, 31, -9, 31, -22, 26, -25, 18, -33, 15, -34, 0, -27, -23)
+
+[node name="Laser" type="Sprite2D" parent="."]
+position = Vector2(-4, -42)
+texture = ExtResource("2_x8g6j")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_r7cx5")
+
+[node name="RayCast" type="RayCast2D" parent="."]
+position = Vector2(-3, -48)
+target_position = Vector2(0, -600)
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(-3, -56, -6, -123)
+width = 8.0
+default_color = Color(0.894118, 0.180392, 0.137255, 1)

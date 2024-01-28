@@ -1,0 +1,193 @@
+[gd_scene load_steps=15 format=3 uid="uid://cqn7jv5llrslv"]
+
+[ext_resource type="Script" path="res://scenes/scripts/EndingCutscene.gd" id="1_i4xie"]
+[ext_resource type="Theme" uid="uid://dty6n2jvheoev" path="res://resources/themes/main.tres" id="2_ex17o"]
+[ext_resource type="Texture2D" uid="uid://n2v1rayi3y8s" path="res://resources/sprites/cutscene/3_1.png" id="3_dxggd"]
+[ext_resource type="Texture2D" uid="uid://iibwahp6kmw5" path="res://resources/sprites/bg.png" id="3_hqgtg"]
+[ext_resource type="Texture2D" uid="uid://cc3tapg7ao1ic" path="res://resources/sprites/BGParallax.png" id="4_yl4dk"]
+[ext_resource type="Texture2D" uid="uid://dcf3bix1smxgw" path="res://resources/sprites/cutscene/escapeship.png" id="5_b17q6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ds2ub"]
+atlas = ExtResource("5_b17q6")
+region = Rect2(0, 0, 480, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_npgvi"]
+atlas = ExtResource("5_b17q6")
+region = Rect2(480, 0, 480, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j3iao"]
+atlas = ExtResource("5_b17q6")
+region = Rect2(960, 0, 480, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ske50"]
+atlas = ExtResource("5_b17q6")
+region = Rect2(1440, 0, 480, 270)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3sjip"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ds2ub")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_npgvi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j3iao")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ske50")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="Animation" id="Animation_g8ms1"]
+resource_name = "cutscene"
+length = 15.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Ship:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(240, 135), Vector2(2160, 135)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(14.7, 14.9),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"shake"
+}, {
+"args": [],
+"method": &"end_cutscene"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_xxev1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Ship:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pvnhm"]
+_data = {
+"RESET": SubResource("Animation_xxev1"),
+"cutscene": SubResource("Animation_g8ms1")
+}
+
+[node name="EndingCutscene" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_i4xie")
+
+[node name="Ship" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_3sjip")
+frame_progress = 0.589337
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2153, 136)
+texture = ExtResource("3_dxggd")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 337.0
+offset_top = 21.0
+offset_right = 817.0
+offset_bottom = 205.0
+theme = ExtResource("2_ex17o")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+bbcode_enabled = true
+text = "[center]
+BG Art - [color=4b5bab][wave]Pedro Pagiel[/wave][/color]"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+offset_left = 491.0
+offset_top = 196.0
+offset_right = 971.0
+offset_bottom = 380.0
+theme = ExtResource("2_ex17o")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+bbcode_enabled = true
+text = "[center]
+CG Art - [color=4b5bab][wave]@luigi_troxao[/wave][/color]"
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="."]
+offset_left = 862.0
+offset_top = 45.0
+offset_right = 1342.0
+offset_bottom = 229.0
+theme = ExtResource("2_ex17o")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+bbcode_enabled = true
+text = "[center]
+Character and object art - [color=4b5bab][wave]Matheus Gravalos[/wave][/color]
+"
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="."]
+offset_left = 1219.0
+offset_top = 189.0
+offset_right = 1699.0
+offset_bottom = 373.0
+theme = ExtResource("2_ex17o")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+bbcode_enabled = true
+text = "[center]
+Code and game design - [color=4b5bab][wave]Moraguma[/wave][/color]"
+
+[node name="RichTextLabel5" type="RichTextLabel" parent="."]
+offset_left = 1660.0
+offset_top = 18.0
+offset_right = 2140.0
+offset_bottom = 202.0
+theme = ExtResource("2_ex17o")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+bbcode_enabled = true
+text = "[center]
+Audio director - [color=4b5bab][wave]Chagasz (@chagasgstv)[/wave][/color]"
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource("3_hqgtg")
+centered = false
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.5, 1)
+motion_mirroring = Vector2(480, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+texture = ExtResource("4_yl4dk")
+centered = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_pvnhm")
+}

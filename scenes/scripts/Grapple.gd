@@ -6,6 +6,7 @@ const CONSTANT_FORCE = 20
 
 
 @export var code = ""
+var wk_pair = null
 var pair = null
 var rendering_rope = false
 var is_first
@@ -30,16 +31,25 @@ func _movement_process(delta: float):
 		super(delta)
 
 
+func _physics_process(delta: float) -> void:
+	if wk_pair != null:
+		if wk_pair.get_ref() == null:
+			pair = null
+			wk_pair = null
+	
+	super(delta)
+
+
 func _stuck_process(delta: float):
 	if pair != null:
 		stuck.aim_vel += (pair.position - position).normalized() * (pair.position - position).length() * CONSTANT_FORCE * delta / stuck.mass
 		
 		if rendering_rope:
-			print(pair.position - position)
 			rope.set_point_position(1, (pair.position - position).rotated(-rotation))
 
 
 func connect_pair(new_pair):
+	wk_pair = weakref(new_pair)
 	pair = new_pair
 
 
@@ -52,6 +62,8 @@ func _collision_process(past_velocity: Vector2, collision: KinematicCollision2D,
 		var group_nodes = get_tree().get_nodes_in_group(code)
 		group_nodes.erase(self)
 		if len(group_nodes) != 0:
+			SoundController.play_sfx("Grapple")
+			
 			var new_pair = group_nodes[0]
 			if new_pair.stuck != null and pair == null:
 				connect_pair(new_pair)

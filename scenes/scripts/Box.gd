@@ -16,9 +16,11 @@ func exit_area(body: Node2D) -> void:
 	in_range.erase(body)
 	
 	if len(in_range) == 1:
+		SoundController.play_sfx("Box")
+		
 		var platform = PLATFORM_SCENE.instantiate()
 		platform.position = position
 		platform.rotation = rotation
 		platform.vel = velocity / 10
-		parent.add_child(platform)
+		parent.call_deferred("add_child", platform)
 		queue_free()

@@ -1,0 +1,158 @@
+[gd_scene load_steps=9 format=3 uid="uid://du4w8ms0klrte"]
+
+[ext_resource type="Script" path="res://scenes/scripts/EscapePod.gd" id="1_behsb"]
+[ext_resource type="Texture2D" uid="uid://c7l3dku8el8vw" path="res://resources/sprites/scapepod.png" id="1_k0wg5"]
+[ext_resource type="Script" path="res://addons/jam_essentials/scenes/scripts/WavingElement.gd" id="2_wyeyd"]
+
+[sub_resource type="Gradient" id="Gradient_hlgd5"]
+colors = PackedColorArray(0.989816, 0.532619, 0.128538, 0.996078, 0.792157, 0.462745, 0.243137, 0.152941)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bown5"]
+radius = 29.0
+height = 574.0
+
+[sub_resource type="Animation" id="Animation_2ygf6"]
+resource_name = "escape"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D/Particles:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.8),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.8, 6)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 1.32968, -0.5, -300, -0.306556, 355, 0.25, 0),
+"times": PackedFloat32Array(0.8, 6)
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"go_to_ending"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_aemib"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2yx6q"]
+_data = {
+"RESET": SubResource("Animation_aemib"),
+"escape": SubResource("Animation_2ygf6")
+}
+
+[node name="EscapePod" type="Area2D"]
+texture_filter = 1
+script = ExtResource("1_behsb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_k0wg5")
+hframes = 3
+frame = 1
+script = ExtResource("2_wyeyd")
+
+[node name="Particles" type="CPUParticles2D" parent="Sprite2D"]
+position = Vector2(0, 28)
+amount = 64
+lifetime = 5.0
+randomness = 0.2
+emission_shape = 1
+emission_sphere_radius = 5.0
+direction = Vector2(0, 1)
+spread = 15.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+damping_min = 20.0
+damping_max = 30.0
+scale_amount_min = 2.0
+scale_amount_max = 3.0
+color_ramp = SubResource("Gradient_hlgd5")
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+position = Vector2(0, -8)
+shape = SubResource("CapsuleShape2D_bown5")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_2yx6q")
+}
+
+[connection signal="body_entered" from="." to="." method="body_entered"]

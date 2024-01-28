@@ -1,0 +1,45 @@
+[gd_scene load_steps=8 format=3 uid="uid://d2tkuoqlmmwiu"]
+
+[ext_resource type="Script" path="res://scenes/scripts/Game.gd" id="1_emjby"]
+[ext_resource type="PackedScene" uid="uid://ds16gakjru6i2" path="res://scenes/Player.tscn" id="2_1tddw"]
+[ext_resource type="PackedScene" uid="uid://bnj6offovog47" path="res://scenes/MeteorSmall.tscn" id="4_1t66m"]
+[ext_resource type="PackedScene" uid="uid://cm0mguoufcdxe" path="res://scenes/CollectibleItem.tscn" id="4_dkk7e"]
+[ext_resource type="PackedScene" uid="uid://dxudjah187we7" path="res://scenes/ShipSmall.tscn" id="5_5poiq"]
+[ext_resource type="PackedScene" uid="uid://bm301h64ky48b" path="res://scenes/ShipBig.tscn" id="6_e6yk2"]
+[ext_resource type="PackedScene" uid="uid://cdhhacwpudwao" path="res://scenes/MeteorBig.tscn" id="6_gn2hy"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_emjby")
+
+[node name="Player" parent="." instance=ExtResource("2_1tddw")]
+position = Vector2(254, 169)
+
+[node name="CollectibleItem" parent="." instance=ExtResource("4_dkk7e")]
+position = Vector2(107, 181)
+
+[node name="CollectibleItem2" parent="." instance=ExtResource("4_dkk7e")]
+position = Vector2(159, 181)
+
+[node name="CollectibleItem3" parent="." instance=ExtResource("4_dkk7e")]
+position = Vector2(132, 142)
+
+[node name="MeteorSmall" parent="." instance=ExtResource("4_1t66m")]
+position = Vector2(248, 71)
+
+[node name="ShipSmall" parent="." instance=ExtResource("5_5poiq")]
+position = Vector2(134, 215)
+
+[node name="MeteorBig" parent="." instance=ExtResource("6_gn2hy")]
+position = Vector2(408, 223)
+
+[node name="ShipBig" parent="." instance=ExtResource("6_e6yk2")]
+position = Vector2(246, 216)
+rotation = -0.301085
+
+[node name="ShipBig2" parent="." instance=ExtResource("6_e6yk2")]
+position = Vector2(46, 163)
+rotation = 1.14071
+
+[node name="ShipBig3" parent="." instance=ExtResource("6_e6yk2")]
+position = Vector2(691, 184)
+rotation = -0.32529

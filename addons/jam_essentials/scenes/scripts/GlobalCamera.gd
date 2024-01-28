@@ -3,6 +3,9 @@ extends Camera2D
 
 signal finish_transition
 
+const TRANSPARENT_COLOR = Color(1.0, 1.0, 1.0, 0.2)
+const WHITE_COLOR = Color(1.0, 1.0, 1.0, 1.0)
+
 const PROCESS_PRIORITY = 2
 
 const TRANSITION_TIME = 2.0
@@ -10,7 +13,7 @@ const LERP_WEIGHT = 0.1
 
 const SHAKE = 0.5
 const DECAY = 0.8
-const MAX_OFFSET = Vector2(160, 90)
+const MAX_OFFSET = Vector2(32, 18)
 const MAX_ROLL = 0.15
 const TRAUMA_POWER = 2
 
@@ -64,6 +67,7 @@ func _process(delta):
 		rotation = base_rotation
 	
 	hud.position = get_screen_center_position() - position + Vector2(-240, -135)
+	shader_canvas.position = hud.position
 
 
 func add_trauma(amount = SHAKE):
@@ -117,6 +121,8 @@ func finish_transition_animation():
 	aim_node = null
 	snap_to_aim()
 	
+	shader_canvas.position = hud.position
+	
 	emit_signal("finish_transition")
 
 
@@ -129,6 +135,14 @@ func start_gameplay(player):
 	snap_to_aim()
 	
 	hud.show()
+
+
+func stop_gameplay():
+	aim_node = null
+	follow_pos(Vector2(240, 135))
+	snap_to_aim()
+	
+	hud.hide()
 
 
 func update_hud(items: Array, selection: int, tooltip_text: String):
@@ -146,3 +160,11 @@ func update_hud(items: Array, selection: int, tooltip_text: String):
 
 func update_meters(amount: int):
 	meters.text = str(amount) + "m"
+
+
+func make_transparent():
+	hud.modulate = TRANSPARENT_COLOR
+
+
+func make_visible():
+	hud.modulate = WHITE_COLOR

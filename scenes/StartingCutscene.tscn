@@ -1,0 +1,226 @@
+[gd_scene load_steps=17 format=3 uid="uid://c5668aadw0mma"]
+
+[ext_resource type="Script" path="res://scenes/scripts/StartingCutscene.gd" id="1_nherl"]
+[ext_resource type="Texture2D" uid="uid://iibwahp6kmw5" path="res://resources/sprites/bg.png" id="2_6l80a"]
+[ext_resource type="Texture2D" uid="uid://bhjmlwdxhlj6v" path="res://resources/sprites/cutscene/1.png" id="3_dk5xs"]
+[ext_resource type="Texture2D" uid="uid://cex6cpjhte8q6" path="res://resources/sprites/cutscene/2_1.png" id="4_4hibl"]
+[ext_resource type="Script" path="res://scenes/scripts/ShakingElement.gd" id="5_6lfbt"]
+[ext_resource type="Texture2D" uid="uid://bsqekmo4um54r" path="res://resources/sprites/cutscene/2_2.png" id="6_ivqkb"]
+[ext_resource type="Script" path="res://addons/jam_essentials/scenes/scripts/WavingElement.gd" id="7_pt7m1"]
+[ext_resource type="Texture2D" uid="uid://bvbt05lmbdjik" path="res://resources/sprites/cutscene/2_3.png" id="8_x3jaj"]
+[ext_resource type="Texture2D" uid="uid://b1g26756qfqd2" path="res://resources/sprites/cutscene/2_4.png" id="9_kwn4j"]
+[ext_resource type="Texture2D" uid="uid://djucp6aamm48x" path="res://resources/sprites/cutscene/2_5.png" id="10_2or25"]
+[ext_resource type="Texture2D" uid="uid://n2v1rayi3y8s" path="res://resources/sprites/cutscene/3_1.png" id="11_lo1hg"]
+[ext_resource type="Texture2D" uid="uid://cce8r83b7gvj7" path="res://resources/sprites/cutscene/3_2.png" id="12_ct6yc"]
+[ext_resource type="Texture2D" uid="uid://ceqj85k7ay81u" path="res://resources/sprites/cutscene/3_3.png" id="13_w2g5f"]
+
+[sub_resource type="Animation" id="Animation_0np4q"]
+resource_name = "cutscene"
+length = 15.0
+step = 0.5
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("1")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"hide"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("2")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(5, 10),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"show"
+}, {
+"args": [],
+"method": &"hide"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("3")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(10),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"show"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(15),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"end_cutscene"
+}]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("3/Ship7:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(10, 15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(42, -29), Vector2(0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("3/Ship8:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(10, 15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-12, -32)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("1/Ship:offset")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-100, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_8k2n7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("3/Ship7:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("3/Ship8:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("1/Ship:offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-100, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ewjhk"]
+_data = {
+"RESET": SubResource("Animation_8k2n7"),
+"cutscene": SubResource("Animation_0np4q")
+}
+
+[node name="StartingCutscene" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_nherl")
+
+[node name="BG" type="Sprite2D" parent="."]
+texture = ExtResource("2_6l80a")
+centered = false
+
+[node name="1" type="Node2D" parent="."]
+
+[node name="Ship" type="Sprite2D" parent="1"]
+texture = ExtResource("3_dk5xs")
+centered = false
+offset = Vector2(-100, 0)
+script = ExtResource("7_pt7m1")
+amplitude = Vector2(0, -8)
+frequency = 0.2
+
+[node name="2" type="Node2D" parent="."]
+visible = false
+
+[node name="Ship2" type="Sprite2D" parent="2"]
+texture = ExtResource("4_4hibl")
+centered = false
+script = ExtResource("5_6lfbt")
+
+[node name="Ship3" type="Sprite2D" parent="2"]
+texture = ExtResource("6_ivqkb")
+centered = false
+script = ExtResource("7_pt7m1")
+amplitude = Vector2(0, 8)
+frequency = 0.2
+
+[node name="Ship4" type="Sprite2D" parent="2/Ship3"]
+texture = ExtResource("8_x3jaj")
+centered = false
+
+[node name="Ship5" type="Sprite2D" parent="2/Ship3"]
+texture = ExtResource("9_kwn4j")
+centered = false
+
+[node name="Ship6" type="Sprite2D" parent="2"]
+texture = ExtResource("10_2or25")
+centered = false
+
+[node name="3" type="Node2D" parent="."]
+visible = false
+
+[node name="Ship7" type="Sprite2D" parent="3"]
+texture = ExtResource("11_lo1hg")
+centered = false
+
+[node name="Ship8" type="Sprite2D" parent="3"]
+texture = ExtResource("12_ct6yc")
+centered = false
+
+[node name="Ship9" type="Sprite2D" parent="3"]
+texture = ExtResource("13_w2g5f")
+centered = false
+script = ExtResource("5_6lfbt")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ewjhk")
+}

@@ -1,10 +1,207 @@
-[gd_scene load_steps=2 format=3 uid="uid://bqkx1bmvj3rym"]
+[gd_scene load_steps=44 format=3 uid="uid://bqkx1bmvj3rym"]
 
 [ext_resource type="Script" path="res://addons/jam_essentials/scenes/scripts/SoundController.gd" id="1_xbq3f"]
+[ext_resource type="AudioStream" uid="uid://c261r424fd2mj" path="res://resources/sound/sfx/GGJ 2024 - sfx_footsteps_1.wav" id="2_5ckba"]
+[ext_resource type="AudioStream" uid="uid://cwudjatdtgfse" path="res://resources/sound/intro.ogg" id="2_ca1yq"]
+[ext_resource type="AudioStream" uid="uid://dsybcwvs6a4e7" path="res://resources/sound/loop.ogg" id="3_scg70"]
+[ext_resource type="AudioStream" uid="uid://3d5r1lgr2ewj" path="res://resources/sound/sfx/GGJ 2024 - sfx_footsteps_2.wav" id="3_vhd42"]
+[ext_resource type="AudioStream" uid="uid://7f50ud88tqoj" path="res://resources/sound/sfx/GGJ 2024 - sfx_footsteps_3.wav" id="4_g3mll"]
+[ext_resource type="AudioStream" uid="uid://c5xct6yg1dirn" path="res://resources/sound/menuintro.ogg" id="4_x5xaq"]
+[ext_resource type="AudioStream" uid="uid://oqmivw57p1f0" path="res://resources/sound/menuloop.ogg" id="5_21sec"]
+[ext_resource type="AudioStream" uid="uid://brkirk40shrcd" path="res://resources/sound/sfx/GGJ 2024 - sfx_footsteps_4.wav" id="5_lg1nw"]
+[ext_resource type="AudioStream" uid="uid://cbhk7goq72cat" path="res://resources/sound/sfx/GGJ 2024 - sfx_footsteps_5.wav" id="6_aflid"]
+[ext_resource type="AudioStream" uid="uid://bgckxj855080w" path="res://resources/sound/sfx/GGJ 2024 - sfx_footsteps_6.wav" id="7_nuuqn"]
+[ext_resource type="AudioStream" uid="uid://cp4r3eove04yu" path="res://resources/sound/sfx/GGJ 2024 - sfx_death_1.wav" id="8_l7gu4"]
+[ext_resource type="AudioStream" uid="uid://cafg5trwiffye" path="res://resources/sound/sfx/GGJ 2024 - sfx_death_2.wav" id="9_h8dtt"]
+[ext_resource type="AudioStream" uid="uid://cxkji5se1r3dr" path="res://resources/sound/sfx/GGJ 2024 - sfx_death_3.wav" id="10_ctogi"]
+[ext_resource type="AudioStream" uid="uid://blrvacj6yj0pw" path="res://resources/sound/sfx/GGJ 2024 - sfx_jump_1.wav" id="11_ogpb8"]
+[ext_resource type="AudioStream" uid="uid://c52va2ekutp1b" path="res://resources/sound/sfx/GGJ 2024 - sfx_jump_2.wav" id="12_gimhh"]
+[ext_resource type="AudioStream" uid="uid://lgppcjf3uwjs" path="res://resources/sound/sfx/GGJ 2024 - sfx_jump_3.wav" id="13_om3od"]
+[ext_resource type="AudioStream" uid="uid://cyicqdq0tkaca" path="res://resources/sound/sfx/GGJ 2024 - sfx_box_1.wav" id="14_prtli"]
+[ext_resource type="AudioStream" uid="uid://bl55hv3mbmp75" path="res://resources/sound/sfx/GGJ 2024 - sfx_box_2.wav" id="15_b515n"]
+[ext_resource type="AudioStream" uid="uid://dba4qm7u8l7kh" path="res://resources/sound/sfx/GGJ 2024 - sfx_box_3.wav" id="16_0dalu"]
+[ext_resource type="AudioStream" uid="uid://dtyot8aymdrm7" path="res://resources/sound/sfx/GGJ 2024 - sfx_brick_1.wav" id="17_i6flu"]
+[ext_resource type="AudioStream" uid="uid://dl73ueukj4riy" path="res://resources/sound/sfx/GGJ 2024 - sfx_brick_2.wav" id="18_llq1w"]
+[ext_resource type="AudioStream" uid="uid://x1k5w2dnexam" path="res://resources/sound/sfx/GGJ 2024 - sfx_brick_3.wav" id="19_rk0rg"]
+[ext_resource type="AudioStream" uid="uid://c3urfil8nlaeg" path="res://resources/sound/sfx/GGJ 2024 - sfx_laser_1.wav" id="20_c4vg6"]
+[ext_resource type="AudioStream" uid="uid://cbjw5dd7q7sdv" path="res://resources/sound/sfx/GGJ 2024 - sfx_laser_2.wav" id="21_j7lvl"]
+[ext_resource type="AudioStream" uid="uid://diunprm7y18wn" path="res://resources/sound/sfx/GGJ 2024 - sfx_laser_3.wav" id="22_x254k"]
+[ext_resource type="AudioStream" uid="uid://bet3cu31u14ko" path="res://resources/sound/sfx/GGJ 2024 - sfx_rocket.wav" id="23_8ads1"]
+[ext_resource type="AudioStream" uid="uid://dmtaau2ij3yvl" path="res://resources/sound/sfx/GGJ 2024 - sfx_grapple_1.wav" id="23_gkpqo"]
+[ext_resource type="AudioStream" uid="uid://dra2oirib20vb" path="res://resources/sound/sfx/GGJ 2024 - sfx_grapple_2.wav" id="24_8y662"]
+[ext_resource type="AudioStream" uid="uid://c73pjetfynrj" path="res://resources/sound/sfx/GGJ 2024 - sfx_grapple_3.wav" id="25_7nl4t"]
+[ext_resource type="AudioStream" uid="uid://bw8odsccbhn6g" path="res://resources/sound/sfx/GGJ 2024 - sfx_pickup_1.wav" id="26_ngtks"]
+[ext_resource type="AudioStream" uid="uid://7qpud85ynijc" path="res://resources/sound/sfx/GGJ 2024 - sfx_pickup_2.wav" id="27_pr4yn"]
+[ext_resource type="AudioStream" uid="uid://dpoegp1a2y0l" path="res://resources/sound/sfx/GGJ 2024 - sfx_pickup_3.wav" id="28_uafkc"]
+[ext_resource type="AudioStream" uid="uid://dhp0mq7iqg1ng" path="res://resources/sound/sfx/GGJ 2024 - sfx_pulverizer_1.wav" id="29_0v1ji"]
+[ext_resource type="AudioStream" uid="uid://b8bpax7eu3aen" path="res://resources/sound/sfx/GGJ 2024 - sfx_pulverizer_2.wav" id="30_dbhn1"]
+[ext_resource type="AudioStream" uid="uid://hijvf07wlckw" path="res://resources/sound/sfx/GGJ 2024 - sfx_pulverizer_3.wav" id="31_kn0fe"]
+[ext_resource type="AudioStream" uid="uid://bhrgfas1mhlro" path="res://resources/sound/sfx/GGJ 2024 - sfx_throw_1.wav" id="32_dwm5v"]
+[ext_resource type="AudioStream" uid="uid://cbyocsk584wdb" path="res://resources/sound/sfx/GGJ 2024 - sfx_throw_2.wav" id="33_c6v3e"]
+[ext_resource type="AudioStream" uid="uid://0cw37ntwfvus" path="res://resources/sound/sfx/GGJ 2024 - sfx_throw_3.wav" id="34_yc3ad"]
+[ext_resource type="AudioStream" uid="uid://ndxdcggyg2cj" path="res://resources/sound/sfx/GGJ 2024 - sfx_hover.wav" id="36_3ejg3"]
+[ext_resource type="AudioStream" uid="uid://bi3xbivykxofg" path="res://resources/sound/sfx/GGJ 2024 - sfx_play.wav" id="37_lfj8j"]
+[ext_resource type="AudioStream" uid="uid://c34g32wy14k48" path="res://resources/sound/sfx/GGJ 2024 - sfx_buttons.wav" id="38_st7mw"]
+[ext_resource type="AudioStream" uid="uid://bo1hdcbhk0kee" path="res://resources/sound/ending.ogg" id="43_m2jk4"]
 
 [node name="SoundController" type="Node"]
 script = ExtResource("1_xbq3f")
 
 [node name="SFX" type="Node" parent="."]
 
+[node name="Footstep" type="Node" parent="SFX"]
+
+[node name="1" type="AudioStreamPlayer" parent="SFX/Footstep"]
+stream = ExtResource("2_5ckba")
+volume_db = 10.0
+
+[node name="2" type="AudioStreamPlayer" parent="SFX/Footstep"]
+stream = ExtResource("3_vhd42")
+volume_db = 10.0
+
+[node name="3" type="AudioStreamPlayer" parent="SFX/Footstep"]
+stream = ExtResource("4_g3mll")
+volume_db = 10.0
+
+[node name="4" type="AudioStreamPlayer" parent="SFX/Footstep"]
+stream = ExtResource("5_lg1nw")
+volume_db = 10.0
+
+[node name="5" type="AudioStreamPlayer" parent="SFX/Footstep"]
+stream = ExtResource("6_aflid")
+volume_db = 10.0
+
+[node name="6" type="AudioStreamPlayer" parent="SFX/Footstep"]
+stream = ExtResource("7_nuuqn")
+volume_db = 10.0
+
+[node name="Death" type="Node" parent="SFX"]
+
+[node name="1" type="AudioStreamPlayer" parent="SFX/Death"]
+stream = ExtResource("8_l7gu4")
+
+[node name="2" type="AudioStreamPlayer" parent="SFX/Death"]
+stream = ExtResource("9_h8dtt")
+
+[node name="3" type="AudioStreamPlayer" parent="SFX/Death"]
+stream = ExtResource("10_ctogi")
+
+[node name="Jump" type="Node" parent="SFX"]
+
+[node name="1" type="AudioStreamPlayer" parent="SFX/Jump"]
+stream = ExtResource("11_ogpb8")
+
+[node name="2" type="AudioStreamPlayer" parent="SFX/Jump"]
+stream = ExtResource("12_gimhh")
+
+[node name="3" type="AudioStreamPlayer" parent="SFX/Jump"]
+stream = ExtResource("13_om3od")
+
+[node name="Box" type="Node" parent="SFX"]
+
+[node name="1" type="AudioStreamPlayer" parent="SFX/Box"]
+stream = ExtResource("14_prtli")
+
+[node name="2" type="AudioStreamPlayer" parent="SFX/Box"]
+stream = ExtResource("15_b515n")
+
+[node name="3" type="AudioStreamPlayer" parent="SFX/Box"]
+stream = ExtResource("16_0dalu")
+
+[node name="Brick" type="Node" parent="SFX"]
+
+[node name="1" type="AudioStreamPlayer" parent="SFX/Brick"]
+stream = ExtResource("17_i6flu")
+
+[node name="2" type="AudioStreamPlayer" parent="SFX/Brick"]
+stream = ExtResource("18_llq1w")
+
+[node name="3" type="AudioStreamPlayer" parent="SFX/Brick"]
+stream = ExtResource("19_rk0rg")
+
+[node name="Laser" type="Node" parent="SFX"]
+
+[node name="1" type="AudioStreamPlayer" parent="SFX/Laser"]
+stream = ExtResource("20_c4vg6")
+
+[node name="2" type="AudioStreamPlayer" parent="SFX/Laser"]
+stream = ExtResource("21_j7lvl")
+
+[node name="3" type="AudioStreamPlayer" parent="SFX/Laser"]
+stream = ExtResource("22_x254k")
+
+[node name="Grapple" type="Node" parent="SFX"]
+
+[node name="1" type="AudioStreamPlayer" parent="SFX/Grapple"]
+stream = ExtResource("23_gkpqo")
+
+[node name="2" type="AudioStreamPlayer" parent="SFX/Grapple"]
+stream = ExtResource("24_8y662")
+
+[node name="3" type="AudioStreamPlayer" parent="SFX/Grapple"]
+stream = ExtResource("25_7nl4t")
+
+[node name="Pickup" type="Node" parent="SFX"]
+
+[node name="1" type="AudioStreamPlayer" parent="SFX/Pickup"]
+stream = ExtResource("26_ngtks")
+
+[node name="2" type="AudioStreamPlayer" parent="SFX/Pickup"]
+stream = ExtResource("27_pr4yn")
+
+[node name="3" type="AudioStreamPlayer" parent="SFX/Pickup"]
+stream = ExtResource("28_uafkc")
+
+[node name="Pulverizer" type="Node" parent="SFX"]
+
+[node name="1" type="AudioStreamPlayer" parent="SFX/Pulverizer"]
+stream = ExtResource("29_0v1ji")
+
+[node name="2" type="AudioStreamPlayer" parent="SFX/Pulverizer"]
+stream = ExtResource("30_dbhn1")
+
+[node name="3" type="AudioStreamPlayer" parent="SFX/Pulverizer"]
+stream = ExtResource("31_kn0fe")
+
+[node name="Throw" type="Node" parent="SFX"]
+
+[node name="1" type="AudioStreamPlayer" parent="SFX/Throw"]
+stream = ExtResource("32_dwm5v")
+
+[node name="2" type="AudioStreamPlayer" parent="SFX/Throw"]
+stream = ExtResource("33_c6v3e")
+
+[node name="3" type="AudioStreamPlayer" parent="SFX/Throw"]
+stream = ExtResource("34_yc3ad")
+
+[node name="Rocket" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("23_8ads1")
+
+[node name="Hover" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("36_3ejg3")
+
+[node name="Play" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("37_lfj8j")
+
+[node name="Click" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("38_st7mw")
+
 [node name="Music" type="Node" parent="."]
+
+[node name="Game" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("2_ca1yq")
+
+[node name="GameLoop" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("3_scg70")
+
+[node name="Menu" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("4_x5xaq")
+
+[node name="MenuLoop" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("5_21sec")
+
+[node name="Ending" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("43_m2jk4")
+
+[connection signal="finished" from="Music/Game" to="." method="start_loop"]
+[connection signal="finished" from="Music/Menu" to="." method="loop_menu"]

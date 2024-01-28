@@ -1,0 +1,158 @@
+[gd_scene load_steps=21 format=3 uid="uid://ctt4gmuxgvqsj"]
+
+[ext_resource type="Script" path="res://scenes/scripts/Menu.gd" id="1_ipudk"]
+[ext_resource type="Texture2D" uid="uid://iibwahp6kmw5" path="res://resources/sprites/bg.png" id="1_pu15n"]
+[ext_resource type="Texture2D" uid="uid://dpdf2i6vinupu" path="res://resources/sprites/playbutton.png" id="2_dm4tn"]
+[ext_resource type="Texture2D" uid="uid://cc3tapg7ao1ic" path="res://resources/sprites/BGParallax.png" id="2_h37du"]
+[ext_resource type="Texture2D" uid="uid://qutgblb8c42d" path="res://resources/sprites/playbuttonpressed.png" id="3_nrfp8"]
+[ext_resource type="Texture2D" uid="uid://fy2usmffos8v" path="res://resources/sprites/infinitybutton.png" id="4_exdk0"]
+[ext_resource type="Texture2D" uid="uid://cu4imiavctq34" path="res://resources/sprites/infinitybuttonpressed.png" id="5_s544t"]
+[ext_resource type="Script" path="res://scenes/scripts/TextureButtonSound.gd" id="6_fo16s"]
+[ext_resource type="Texture2D" uid="uid://b4rj0pnmwjep6" path="res://resources/sprites/creditsbutton.png" id="7_l24b5"]
+[ext_resource type="Texture2D" uid="uid://ckmqmn15t4n1e" path="res://resources/sprites/creditsbuttonpressed.png" id="8_kud1u"]
+[ext_resource type="Script" path="res://scenes/scripts/TextureButtonFullSound.gd" id="9_riy4h"]
+[ext_resource type="Theme" uid="uid://dty6n2jvheoev" path="res://resources/themes/main.tres" id="10_1hpdb"]
+[ext_resource type="Script" path="res://addons/jam_essentials/scenes/scripts/CameraFocusButton.gd" id="11_ba18i"]
+[ext_resource type="Texture2D" uid="uid://bqtexague7mfu" path="res://resources/sprites/logo.png" id="12_g4nh6"]
+[ext_resource type="Script" path="res://addons/jam_essentials/scenes/scripts/WavingElement.gd" id="13_aco4w"]
+[ext_resource type="Texture2D" uid="uid://owj1uocq43nu" path="res://resources/sprites/player.png" id="14_wyubs"]
+[ext_resource type="Script" path="res://scenes/scripts/RotatingElement.gd" id="15_s2dyu"]
+[ext_resource type="Texture2D" uid="uid://b8k7uacyg1gjs" path="res://resources/sprites/ship1.png" id="16_lbtmu"]
+[ext_resource type="Texture2D" uid="uid://tt0mrervr5er" path="res://resources/sprites/ship2.png" id="17_17pye"]
+[ext_resource type="Texture2D" uid="uid://cw8cq858owtsj" path="res://resources/sprites/alien.png" id="18_rg67u"]
+
+[node name="Menu" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_ipudk")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource("1_pu15n")
+centered = false
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.5, 1)
+motion_mirroring = Vector2(480, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+texture = ExtResource("2_h37du")
+centered = false
+
+[node name="Play" type="TextureButton" parent="."]
+offset_left = 278.0
+offset_top = 56.0
+offset_right = 426.0
+offset_bottom = 104.0
+texture_normal = ExtResource("2_dm4tn")
+texture_pressed = ExtResource("3_nrfp8")
+texture_hover = ExtResource("3_nrfp8")
+script = ExtResource("6_fo16s")
+
+[node name="Infinity" type="TextureButton" parent="."]
+offset_left = 278.0
+offset_top = 104.0
+offset_right = 426.0
+offset_bottom = 152.0
+texture_normal = ExtResource("4_exdk0")
+texture_pressed = ExtResource("5_s544t")
+texture_hover = ExtResource("5_s544t")
+script = ExtResource("9_riy4h")
+
+[node name="Credits" type="TextureButton" parent="."]
+offset_left = 278.0
+offset_top = 152.0
+offset_right = 426.0
+offset_bottom = 200.0
+texture_normal = ExtResource("7_l24b5")
+texture_pressed = ExtResource("8_kud1u")
+texture_hover = ExtResource("8_kud1u")
+script = ExtResource("9_riy4h")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 486.0
+offset_right = 566.0
+offset_bottom = 46.0
+theme = ExtResource("10_1hpdb")
+text = "BACK"
+flat = true
+script = ExtResource("11_ba18i")
+aim_pos = Vector2(240, 135)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 480.0
+offset_top = 48.0
+offset_right = 960.0
+offset_bottom = 232.0
+theme = ExtResource("10_1hpdb")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+bbcode_enabled = true
+text = "[center]
+BG Art - [color=4b5bab][wave]Pedro Pagiel[/wave][/color]
+CG Art - [color=4b5bab][wave]@luigi_troxao[/wave][/color]
+Character and object art - [color=4b5bab][wave]Matheus Gravalos[/wave][/color]
+Code and game design - [color=4b5bab][wave]Moraguma[/wave][/color]
+Audio director - [color=4b5bab][wave]Chagasz (@chagasgstv)[/wave][/color]"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(147, 131)
+texture = ExtResource("12_g4nh6")
+script = ExtResource("13_aco4w")
+amplitude = Vector2(0, 8)
+frequency = 0.2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Sprite2D"]
+offset_left = -105.0
+offset_top = 16.0
+offset_right = 105.0
+offset_bottom = 56.0
+theme = ExtResource("10_1hpdb")
+bbcode_enabled = true
+text = "[center]and its destruction by crash"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="Sprite2D"]
+offset_left = -105.0
+offset_top = 28.0
+offset_right = 105.0
+offset_bottom = 68.0
+theme = ExtResource("10_1hpdb")
+bbcode_enabled = true
+text = "[center] into a radioactive asteroid"
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(96, 32)
+texture = ExtResource("14_wyubs")
+hframes = 9
+script = ExtResource("15_s2dyu")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(227, 227)
+rotation = -0.29963
+texture = ExtResource("16_lbtmu")
+script = ExtResource("13_aco4w")
+amplitude = Vector2(0, -8)
+frequency = 0.157
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+position = Vector2(419, 43)
+rotation = 0.279088
+texture = ExtResource("17_17pye")
+script = ExtResource("13_aco4w")
+amplitude = Vector2(0, 8)
+frequency = 0.202
+
+[node name="Sprite2D5" type="Sprite2D" parent="."]
+position = Vector2(899, 219)
+rotation = -0.53896
+texture = ExtResource("18_rg67u")
+script = ExtResource("13_aco4w")
+amplitude = Vector2(0, -8)
+frequency = 0.193
+
+[connection signal="pressed" from="Play" to="." method="story_mode"]
+[connection signal="pressed" from="Infinity" to="." method="start_game" binds= ["INFINITY"]]
+[connection signal="pressed" from="Credits" to="." method="goto" binds= [Vector2(720, 135)]]

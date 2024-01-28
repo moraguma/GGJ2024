@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dhp0mq7iqg1ng"
+path="res://.godot/imported/GGJ 2024 - sfx_pulverizer_1.wav-505f4a8a1bfa422ae44cc64ce592fa74.sample"
+
+[deps]
+
+source_file="res://resources/sound/sfx/GGJ 2024 - sfx_pulverizer_1.wav"
+dest_files=["res://.godot/imported/GGJ 2024 - sfx_pulverizer_1.wav-505f4a8a1bfa422ae44cc64ce592fa74.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -27,6 +27,7 @@ func _collision_process(past_velocity: Vector2, collision: KinematicCollision2D,
 		await timer.timeout
 		running = true
 		
+		SoundController.play_sfx("Rocket")
 		timer.start(RUNNING_TIMER)
 		particles.emitting = true
 		await timer.timeout

@@ -1,0 +1,71 @@
+[gd_scene load_steps=10 format=3 uid="uid://cnr7u3r7dhsm7"]
+
+[ext_resource type="Script" path="res://scenes/scripts/GameOver.gd" id="1_d1jwx"]
+[ext_resource type="Texture2D" uid="uid://iibwahp6kmw5" path="res://resources/sprites/bg.png" id="1_wdmh0"]
+[ext_resource type="Theme" uid="uid://dty6n2jvheoev" path="res://resources/themes/main.tres" id="2_0ohjf"]
+[ext_resource type="Script" path="res://addons/jam_essentials/scenes/scripts/TransitionButton.gd" id="4_o08hw"]
+[ext_resource type="Texture2D" uid="uid://owj1uocq43nu" path="res://resources/sprites/player.png" id="5_e27pl"]
+[ext_resource type="Script" path="res://scenes/scripts/RotatingElement.gd" id="6_q38g0"]
+[ext_resource type="Texture2D" uid="uid://tt0mrervr5er" path="res://resources/sprites/ship2.png" id="7_giaxb"]
+[ext_resource type="Script" path="res://addons/jam_essentials/scenes/scripts/WavingElement.gd" id="8_84gl7"]
+[ext_resource type="Texture2D" uid="uid://cw8cq858owtsj" path="res://resources/sprites/alien.png" id="9_valca"]
+
+[node name="GameOver" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_d1jwx")
+
+[node name="BG" type="Sprite2D" parent="."]
+texture = ExtResource("1_wdmh0")
+centered = false
+
+[node name="Retry" type="Button" parent="."]
+offset_top = 144.0
+offset_right = 480.0
+offset_bottom = 180.0
+theme = ExtResource("2_0ohjf")
+text = "RETRY"
+flat = true
+
+[node name="Menu" type="Button" parent="."]
+offset_top = 192.0
+offset_right = 480.0
+offset_bottom = 228.0
+theme = ExtResource("2_0ohjf")
+text = "MENU"
+flat = true
+script = ExtResource("4_o08hw")
+transition_path = "res://scenes/Menu.tscn"
+
+[node name="Score" type="RichTextLabel" parent="."]
+offset_top = 48.0
+offset_right = 480.0
+offset_bottom = 120.0
+theme = ExtResource("2_0ohjf")
+bbcode_enabled = true
+text = "[center]Survived for 124m
+
+Highscore : 124m"
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(394, 144)
+texture = ExtResource("5_e27pl")
+hframes = 9
+script = ExtResource("6_q38g0")
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+position = Vector2(87, 47)
+rotation = -0.786869
+texture = ExtResource("7_giaxb")
+script = ExtResource("8_84gl7")
+amplitude = Vector2(0, 8)
+frequency = 0.202
+
+[node name="Sprite2D5" type="Sprite2D" parent="."]
+position = Vector2(422, 224)
+rotation = -0.53896
+texture = ExtResource("9_valca")
+script = ExtResource("8_84gl7")
+amplitude = Vector2(0, -8)
+frequency = 0.193
+
+[connection signal="pressed" from="Retry" to="." method="retry"]

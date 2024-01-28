@@ -16,6 +16,7 @@ enum Items {
 
 
 var last_item = null
+var highscore = 0
 
 
 func _ready() -> void:

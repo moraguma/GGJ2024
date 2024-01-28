@@ -26,6 +26,8 @@ mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
 [node name="HUD" type="Node2D" parent="."]
+visible = false
+z_index = 10
 texture_filter = 1
 position = Vector2(-240, -136)
 
@@ -65,6 +67,7 @@ offset_top = 7.0
 offset_right = 394.0
 offset_bottom = 53.0
 theme = ExtResource("6_ev3un")
+theme_override_constants/outline_size = 0
 
 [node name="Meters" type="RichTextLabel" parent="HUD"]
 offset_left = 409.0

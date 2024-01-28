@@ -14,7 +14,11 @@ func _collision_process(past_velocity: Vector2, collision: KinematicCollision2D,
 	if active:
 		active = false
 		
+		SoundController.play_sfx("Brick")
+		
 		collision.get_collider().vel = -collision.get_normal() * IMPULSE / collision.get_collider().mass
+		
+		GlobalCamera.add_trauma()
 		
 		var platform = PLATFORM_SCENE.instantiate()
 		platform.position = position

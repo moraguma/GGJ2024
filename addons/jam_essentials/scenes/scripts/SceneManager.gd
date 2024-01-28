@@ -45,6 +45,8 @@ func goto_scene(path: String) -> void:
 # been queued, will call that method on the root not of that new scene
 func _finish_transition():
 	if transitioning:
+		GlobalCamera.stop_gameplay()
+		
 		transitioning = false
 		
 		current_scene.free()

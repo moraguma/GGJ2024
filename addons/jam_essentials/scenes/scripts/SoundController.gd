@@ -45,8 +45,15 @@ func mute_music():
 
 func play_sfx(sfx_name):
 	assert(sfx_name in sfx, "SFX {0} not found".format([sfx_name]))
-	sfx[sfx_name].stop()
-	sfx[sfx_name].play()
+	
+	if not sfx[sfx_name] is AudioStreamPlayer:
+		var options = sfx[sfx_name].get_children()
+		var choice = randi() % len(options)
+		options[choice].stop()
+		options[choice].play()
+	else:
+		sfx[sfx_name].stop()
+		sfx[sfx_name].play()
 
 
 func set_volume(bus: int, volume: float):
@@ -57,3 +64,19 @@ func set_volume(bus: int, volume: float):
 	else:
 		AudioServer.set_bus_mute(bus, false)
 		AudioServer.set_bus_volume_db(bus, 20 * log(volume))
+
+
+func start_loop() -> void:
+	music["Game"].stop()
+	music["GameLoop"].play()
+	music["GameLoop"].volume_db = ON_DB
+	
+	current_music = "GameLoop"
+
+
+func loop_menu() -> void:
+	music["Menu"].stop()
+	music["MenuLoop"].play()
+	music["MenuLoop"].volume_db = ON_DB
+	
+	current_music = "MenuLoop"

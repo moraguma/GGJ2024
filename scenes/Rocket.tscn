@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://b7ox0002ium1q"]
+
+[ext_resource type="Script" path="res://scenes/scripts/Rocket.gd" id="1_ng1be"]
+[ext_resource type="Texture2D" uid="uid://ddbu2tr21m4nj" path="res://resources/sprites/rocket.png" id="2_s2i4s"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ndn6k"]
+size = Vector2(14, 15)
+
+[sub_resource type="Gradient" id="Gradient_i26uh"]
+colors = PackedColorArray(0.989816, 0.532619, 0.128538, 0.996078, 0.792157, 0.462745, 0.243137, 0.152941)
+
+[node name="Rocket" type="CharacterBody2D"]
+texture_filter = 1
+script = ExtResource("1_ng1be")
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_ndn6k")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Particles" type="CPUParticles2D" parent="."]
+position = Vector2(0, -12)
+emitting = false
+amount = 32
+lifetime = 5.0
+randomness = 0.2
+emission_shape = 1
+emission_sphere_radius = 5.0
+direction = Vector2(0, -1)
+spread = 15.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+damping_min = 20.0
+damping_max = 30.0
+scale_amount_min = 2.0
+scale_amount_max = 3.0
+color_ramp = SubResource("Gradient_i26uh")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_s2i4s")

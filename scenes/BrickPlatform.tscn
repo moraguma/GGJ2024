@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://onrt3m5oxulc"]
+
+[ext_resource type="Script" path="res://scenes/scripts/Platform.gd" id="1_vn75x"]
+[ext_resource type="Texture2D" uid="uid://cb3nj8o7rvd6n" path="res://resources/sprites/brick.png" id="2_8afgt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n7i5o"]
+size = Vector2(26, 13)
+
+[node name="BrickPlatform" type="RigidBody2D"]
+mass = 5.0
+gravity_scale = 0.0
+script = ExtResource("1_vn75x")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -3)
+texture = ExtResource("2_8afgt")
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_n7i5o")

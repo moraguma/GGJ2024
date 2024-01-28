@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://cm0mguoufcdxe"]
+
+[ext_resource type="Script" path="res://scenes/scripts/CollectibleItem.gd" id="1_0mvqt"]
+[ext_resource type="Texture2D" uid="uid://dpkke7xquwefv" path="res://resources/sprites/collectibles.png" id="2_7dhuf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o31wd"]
+radius = 19.2354
+
+[node name="CollectibleItem" type="Area2D"]
+texture_filter = 1
+script = ExtResource("1_0mvqt")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_7dhuf")
+hframes = 5
+frame = 4
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_o31wd")
+
+[connection signal="body_entered" from="." to="." method="enter_area"]
+[connection signal="body_exited" from="." to="." method="exit_area"]

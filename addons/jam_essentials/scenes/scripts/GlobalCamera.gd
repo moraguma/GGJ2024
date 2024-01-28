@@ -3,6 +3,7 @@ extends Camera2D
 
 signal finish_transition
 
+const PROCESS_PRIORITY = 2
 
 const TRANSITION_TIME = 2.0
 const LERP_WEIGHT = 0.1
@@ -13,6 +14,13 @@ const MAX_OFFSET = Vector2(160, 90)
 const MAX_ROLL = 0.15
 const TRAUMA_POWER = 2
 
+@onready var ITEM_TO_FRAME = {
+	Globals.Items.ROCKET: 0,
+	Globals.Items.GRAPPLE: 2,
+	Globals.Items.BRICK: 1,
+	Globals.Items.BOX: 3,
+	Globals.Items.GUN: 4
+}
 
 @onready var center: Vector2 = Vector2(ProjectSettings.get_setting("display/window/size/viewport_width"), ProjectSettings.get_setting("display/window/size/viewport_height")) / 2
 @onready var aim_pos: Vector2 = center
@@ -27,8 +35,16 @@ var noise_y = 0
 
 @onready var shader_canvas = $ShaderCanvas
 
+@onready var hud = $HUD
+@onready var item_sprites: Array[Sprite2D] = [$HUD/Items/Item, $HUD/Items/Item2, $HUD/Items/Item3]
+@onready var cursor: Sprite2D = $HUD/Cursor
+@onready var tooltip: RichTextLabel = $HUD/Tooltip
+@onready var meters: RichTextLabel = $HUD/Meters
+
 
 func _ready():
+	process_priority = PROCESS_PRIORITY
+	
 	randomize()
 	noise.seed = randi()
 	noise.frequency = 0.25
@@ -46,6 +62,8 @@ func _process(delta):
 		shake()
 	else:
 		rotation = base_rotation
+	
+	hud.position = get_screen_center_position() - position + Vector2(-240, -135)
 
 
 func add_trauma(amount = SHAKE):
@@ -100,3 +118,31 @@ func finish_transition_animation():
 	snap_to_aim()
 	
 	emit_signal("finish_transition")
+
+
+func start_gameplay(player):
+	limit_top = 0
+	limit_left = 0
+	limit_bottom = 270
+	
+	follow_node(player)
+	snap_to_aim()
+	
+	hud.show()
+
+
+func update_hud(items: Array, selection: int, tooltip_text: String):
+	for i in range(3):
+		if items[i] != null:
+			item_sprites[i].show()
+			item_sprites[i].frame = ITEM_TO_FRAME[items[i]]
+		else:
+			item_sprites[i].hide()
+	
+	cursor.position[0] = item_sprites[selection].position[0]
+	
+	tooltip.text = tooltip_text
+
+
+func update_meters(amount: int):
+	meters.text = str(amount) + "m"

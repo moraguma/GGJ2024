@@ -1,0 +1,57 @@
+[gd_scene load_steps=7 format=3 uid="uid://b3taq4wilp24h"]
+
+[ext_resource type="PackedScene" uid="uid://ds16gakjru6i2" path="res://scenes/Player.tscn" id="1_aya5t"]
+[ext_resource type="PackedScene" uid="uid://v4k1pscvstgi" path="res://scenes/Brick.tscn" id="2_atq3w"]
+[ext_resource type="PackedScene" uid="uid://b24f4jobefpr1" path="res://scenes/Grapple.tscn" id="2_l3da5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gnb1j"]
+size = Vector2(489, 20)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_g0boi"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1xb54"]
+radius = 37.4833
+
+[node name="Test" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_aya5t")]
+position = Vector2(92, 170)
+
+[node name="StaticBody2D" type="RigidBody2D" parent="."]
+position = Vector2(240, 256)
+mass = 3000.0
+gravity_scale = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_gnb1j")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+position = Vector2(168, 112)
+mass = 10.0
+physics_material_override = SubResource("PhysicsMaterial_g0boi")
+gravity_scale = 0.0
+can_sleep = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+shape = SubResource("CircleShape2D_1xb54")
+
+[node name="RigidBody2D2" type="RigidBody2D" parent="."]
+position = Vector2(312, 152)
+mass = 10.0
+physics_material_override = SubResource("PhysicsMaterial_g0boi")
+gravity_scale = 0.0
+can_sleep = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D2"]
+shape = SubResource("CircleShape2D_1xb54")
+
+[node name="Brick" parent="." instance=ExtResource("2_atq3w")]
+position = Vector2(400, 40)
+
+[node name="Grapple" parent="." instance=ExtResource("2_l3da5")]
+position = Vector2(200, 72)
+code = "0"
+
+[node name="Grapple2" parent="." instance=ExtResource("2_l3da5")]
+position = Vector2(288, 48)
+code = "0"

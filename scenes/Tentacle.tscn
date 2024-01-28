@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cg4fw7h2ebqi1"]
+
+[ext_resource type="Script" path="res://scenes/scripts/Platform.gd" id="1_lfnbd"]
+[ext_resource type="Texture2D" uid="uid://cw8cq858owtsj" path="res://resources/sprites/alien.png" id="2_p03sk"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ibkiq"]
+rough = true
+
+[node name="ShipSmall" type="RigidBody2D"]
+texture_filter = 1
+mass = 20.0
+physics_material_override = SubResource("PhysicsMaterial_ibkiq")
+gravity_scale = 0.0
+script = ExtResource("1_lfnbd")
+
+[node name="Hitbox" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-31, -5, -31, 5, -24, 9, -1, 8, 9, 5, 17, 7, 23, 7, 28, 2, 34, 0, 33, -5, 27, -5, 21, -4, 15, -6, 6, -6, -3, -3, -15, -7)
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_p03sk")

@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://bvyt7culqevic"]
+
+[ext_resource type="PackedScene" uid="uid://bm301h64ky48b" path="res://scenes/ShipBig.tscn" id="1_8vkai"]
+[ext_resource type="PackedScene" uid="uid://cm0mguoufcdxe" path="res://scenes/CollectibleItem.tscn" id="2_prax2"]
+[ext_resource type="PackedScene" uid="uid://dxudjah187we7" path="res://scenes/ShipSmall.tscn" id="3_yubvg"]
+
+[node name="Station2" type="Node2D"]
+
+[node name="ShipBig2" parent="." instance=ExtResource("1_8vkai")]
+position = Vector2(98, 205)
+rotation = -3.60879
+
+[node name="CollectibleItem" parent="." instance=ExtResource("2_prax2")]
+position = Vector2(0, 237)
+
+[node name="CollectibleItem2" parent="." instance=ExtResource("2_prax2")]
+position = Vector2(1, 166)
+
+[node name="ShipSmall" parent="." instance=ExtResource("3_yubvg")]
+position = Vector2(-68, 200)
+rotation = 0.556833
+
+[node name="ShipSmall2" parent="." instance=ExtResource("3_yubvg")]
+position = Vector2(-55, 118)
+rotation = -1.3192

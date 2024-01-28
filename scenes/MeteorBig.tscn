@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cdhhacwpudwao"]
+
+[ext_resource type="Script" path="res://scenes/scripts/Platform.gd" id="1_brq2w"]
+[ext_resource type="Texture2D" uid="uid://cwdy0y86bajco" path="res://resources/sprites/meteor2.png" id="2_sy3s7"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ibkiq"]
+rough = true
+
+[node name="MeteorBig" type="RigidBody2D"]
+texture_filter = 1
+mass = 10.0
+physics_material_override = SubResource("PhysicsMaterial_ibkiq")
+gravity_scale = 0.0
+script = ExtResource("1_brq2w")
+
+[node name="Hitbox" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-14, -31, 7, -29, 30, -19, 30, -6, 26, 0, 27, 13, 12, 31, -9, 31, -22, 26, -25, 18, -33, 15, -34, 0, -27, -23)
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_sy3s7")

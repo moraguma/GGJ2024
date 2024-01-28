@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://djeqhikd0tyvq"]
+
+[ext_resource type="Script" path="res://scenes/scripts/Platform.gd" id="1_7gda8"]
+[ext_resource type="Texture2D" uid="uid://pe1v7a6ywyex" path="res://resources/sprites/bigbox.png" id="2_8uhyw"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ibkiq"]
+rough = true
+
+[node name="BoxPlatform" type="RigidBody2D"]
+texture_filter = 1
+mass = 10.0
+physics_material_override = SubResource("PhysicsMaterial_ibkiq")
+gravity_scale = 0.0
+script = ExtResource("1_7gda8")
+
+[node name="Hitbox" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-1, -32, 30, -23, 30, 19, 0, 33, -30, 21, -30, -24)
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_8uhyw")

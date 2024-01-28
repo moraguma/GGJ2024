@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bm301h64ky48b"]
+
+[ext_resource type="Script" path="res://scenes/scripts/Platform.gd" id="1_7ay8a"]
+[ext_resource type="Texture2D" uid="uid://b8k7uacyg1gjs" path="res://resources/sprites/ship1.png" id="2_qbl61"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ibkiq"]
+rough = true
+
+[node name="ShipBig" type="RigidBody2D"]
+texture_filter = 1
+mass = 20.0
+physics_material_override = SubResource("PhysicsMaterial_ibkiq")
+gravity_scale = 0.0
+script = ExtResource("1_7ay8a")
+
+[node name="Hitbox" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-57, -18, 43, -17, 51, -11, 48, 12, -38, 12, -57, 6)
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_qbl61")

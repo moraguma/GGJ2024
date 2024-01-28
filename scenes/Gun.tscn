@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://ck1e0q0lkba8s"]
+
+[ext_resource type="Script" path="res://scenes/scripts/Gun.gd" id="1_mhtkf"]
+[ext_resource type="Texture2D" uid="uid://b3xgo7dx7d41l" path="res://resources/sprites/gun.png" id="2_u87bp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_403km"]
+radius = 12.0416
+
+[node name="Gun" type="CharacterBody2D"]
+texture_filter = 1
+script = ExtResource("1_mhtkf")
+
+[node name="Grapple" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_403km")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_u87bp")
